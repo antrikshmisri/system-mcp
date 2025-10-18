@@ -1,0 +1,15 @@
+# Commands that should be run with caution or not at all
+blacklisted:
+  - rm
+  - shutdown
+  - reboot
+  - halt
+  - poweroff
+  - chmod
+  - chown
+  - dd
+  - mkfs
+  - kill
+  - pkill
+  - userdel
+  - passwd
