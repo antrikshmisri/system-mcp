@@ -1,6 +1,6 @@
 [project]
 name = "sys-mcp"
-version = "0.2.0"
+version = "0.2.1"
 description = "A lightweight MCP server exposing basic system commands for UNIX-like environments."
 readme = "README.md"
 requires-python = ">=3.12"
