@@ -15,5 +15,13 @@ sys-mcp = "src.__main__:main"
 
 [dependency-groups]
 dev = [
+    "commitizen>=4.9.1",
     "mcp-cli>=0.8.4",
 ]
+
+[tool.commitizen]
+name = "cz_conventional_commits"
+tag_format = "$version"
+version_scheme = "semver"
+version_provider = "uv"
+update_changelog_on_bump = true
