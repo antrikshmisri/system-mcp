@@ -35,17 +35,6 @@ classifiers = [
     "Topic :: System :: Monitoring",
     "Topic :: Utilities"
 ]
-dependencies = [
-    "httpx>=0.28.1",
-    "mcp[cli]>=1.18.0",
-    "pyyaml>=6.0.3",
-]
-urls = { 
-    "Source" = "https://github.com/antrikshmisri/system-mcp",
-    "Homepage" = "https://github.com/antrikshmisri/system-mcp",
-    "Documentation" = "https://modelcontextprotocol.io/docs/develop/build-server#testing-your-server-with-claude-for-desktop",
-    "Issues" = "https://github.com/antrikshmisri/system-mcp/issues"
-}
 
 
 [build-system]
