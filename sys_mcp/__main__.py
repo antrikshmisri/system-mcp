@@ -1,7 +1,7 @@
 """Main entry point for sys-mcp."""
 
 import logging
-from src.server import create_server
+from sys_mcp.server import create_server
 
 
 logger = logging.getLogger(__name__)

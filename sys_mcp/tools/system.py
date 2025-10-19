@@ -5,7 +5,7 @@ import yaml
 from pathlib import Path
 from subprocess import PIPE, Popen
 from typing import Set
-from src.tools import MCPToolGroup
+from sys_mcp.tools import MCPToolGroup
 from mcp.server.fastmcp import FastMCP
 
 

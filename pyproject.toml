@@ -42,7 +42,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project.scripts]
-sys-mcp = "src.__main__:main"
+sys-mcp = "sys_mcp.__main__:main"
 
 [dependency-groups]
 dev = [
@@ -56,6 +56,3 @@ tag_format = "$version"
 version_scheme = "semver"
 version_provider = "uv"
 update_changelog_on_bump = true
-
-[tool.hatch.build.targets.wheel]
-packages = ["src"]

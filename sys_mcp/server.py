@@ -2,7 +2,7 @@
 
 import logging
 from mcp.server.fastmcp import FastMCP
-from src.tools.system import SystemToolGroup
+from sys_mcp.tools.system import SystemToolGroup
 
 
 logger = logging.getLogger(__name__)
