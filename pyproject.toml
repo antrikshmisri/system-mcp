@@ -10,6 +10,10 @@ dependencies = [
     "pyyaml>=6.0.3",
 ]
 
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
 [project.scripts]
 sys-mcp = "src.__main__:main"
 
@@ -25,3 +29,6 @@ tag_format = "$version"
 version_scheme = "semver"
 version_provider = "uv"
 update_changelog_on_bump = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src"]
