@@ -1,7 +1,7 @@
 [project]
 name = "sys-mcp"
 version = "0.2.0"
-description = "Add your description here"
+description = "A lightweight MCP server exposing basic system commands for UNIX-like environments."
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
@@ -9,6 +9,44 @@ dependencies = [
     "mcp[cli]>=1.18.0",
     "pyyaml>=6.0.3",
 ]
+authors = [
+    { name = "Antriksh Misri", email = "antrikshmisri@gmail.com" }
+]
+maintainers = [
+    { name = "Antriksh Misri", email = "antrikshmisri@gmail.com" }
+]
+keywords = [
+    "mcp",
+    "system",
+    "unix",
+    "cli",
+    "automation",
+    "claude",
+    "server"
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: POSIX :: Linux",
+    "Operating System :: MacOS",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: System :: Monitoring",
+    "Topic :: Utilities"
+]
+dependencies = [
+    "httpx>=0.28.1",
+    "mcp[cli]>=1.18.0",
+    "pyyaml>=6.0.3",
+]
+urls = { 
+    "Source" = "https://github.com/antrikshmisri/system-mcp",
+    "Homepage" = "https://github.com/antrikshmisri/system-mcp",
+    "Documentation" = "https://modelcontextprotocol.io/docs/develop/build-server#testing-your-server-with-claude-for-desktop",
+    "Issues" = "https://github.com/antrikshmisri/system-mcp/issues"
+}
+
 
 [build-system]
 requires = ["hatchling"]
