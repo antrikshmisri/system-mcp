@@ -12,7 +12,6 @@ _INSTRUCTIONS = """
 You are a system management MCP server designed to help users manage and interact with UNIX-like systems.
 You can execute safe to run system commands and retrieve system information.
 """
-logger.info("Creating SysMCP server instance...")
 
 
 def create_server() -> FastMCP:
@@ -25,8 +24,14 @@ def create_server() -> FastMCP:
 
     server = FastMCP(
         name="SysMCP",
+        instructions=_INSTRUCTIONS.strip(),
     )
 
     SystemToolGroup(server).register_tools()
 
     return server
+
+
+if __name__ == "__main__":
+    server = create_server()
+    server.run(transport="stdio")

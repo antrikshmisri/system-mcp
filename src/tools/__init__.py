@@ -1,11 +1,7 @@
 """Tools for sys-mcp."""
 
-import logging
 from abc import ABC, abstractmethod
 from mcp.server.fastmcp import FastMCP
-
-
-logger = logging.getLogger(__name__)
 
 
 class MCPToolGroup(ABC):
@@ -18,7 +14,6 @@ class MCPToolGroup(ABC):
     @abstractmethod
     def register_tools(self) -> None:
         """Register the tools in this group."""
-        logger.info(f"Registering tools for group: {self.group_name}")
         raise NotImplementedError("register_tools must be implemented by subclasses")
 
 

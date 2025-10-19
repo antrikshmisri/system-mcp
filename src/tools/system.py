@@ -1,5 +1,6 @@
 """MCP tools for system control and information."""
 
+import logging
 import yaml
 from pathlib import Path
 from subprocess import PIPE, Popen
@@ -8,7 +9,10 @@ from src.tools import MCPToolGroup
 from mcp.server.fastmcp import FastMCP
 
 
-def __read_blacklisted_commands() -> Set[str]:
+logger = logging.getLogger(__name__)
+
+
+def _read_blacklisted_commands() -> Set[str]:
     """Read the blacklisted commands from the YAML file.
 
     Returns:
@@ -22,10 +26,10 @@ def __read_blacklisted_commands() -> Set[str]:
     return set(data.get("blacklisted", []))
 
 
-BLACKLISTED_COMMANDS: Set[str] = __read_blacklisted_commands()
+BLACKLISTED_COMMANDS: Set[str] = _read_blacklisted_commands()
 
 
-def __is_command_safe(command: str) -> bool:
+def _is_command_safe(command: str) -> bool:
     """Check if a command is safe to execute.
 
     Args:
@@ -44,7 +48,7 @@ class SystemToolGroup(MCPToolGroup):
         super().__init__(server, group_name="system")
 
     @staticmethod
-    def _execute_command(command: str) -> str:
+    def execute_command(command: str) -> str:
         """Execute a system command if it is safe.
 
         Args:
@@ -53,7 +57,7 @@ class SystemToolGroup(MCPToolGroup):
         Returns:
             The output of the command or an error message.
         """
-        if not __is_command_safe(command):
+        if not _is_command_safe(command):
             return f"Error: Command '{command}' is blacklisted and cannot be executed."
 
         proc = Popen(command, shell=True, stdout=PIPE, stderr=PIPE)
@@ -65,13 +69,13 @@ class SystemToolGroup(MCPToolGroup):
         return stdout.decode()
 
     @staticmethod
-    def _system_stats() -> str:
+    def system_stats() -> str:
         """Retrieve basic system statistics.
 
         Returns:
             A string containing system statistics.
         """
-        proc = Popen("top -bn1 | head -n 10", shell=True, stdout=PIPE, stderr=PIPE)
+        proc = Popen("top -l 1 | head -n 10", shell=True, stdout=PIPE, stderr=PIPE)
         stdout, stderr = proc.communicate()
 
         if proc.returncode != 0:
@@ -85,12 +89,13 @@ class SystemToolGroup(MCPToolGroup):
         - exec_cmd: Execute a system command.
         - sys_stats: Retrieve basic system statistics.
         """
+        logger.info("Registering system tools...")
         self.server.tool(
-            name="exec_cmd",
+            name="execute_command",
             description="Execute a system command.",
-        )(self._execute_command)
+        )(self.execute_command)
 
         self.server.tool(
-            name="sys_stats",
+            name="system_stats",
             description="Retrieve basic system statistics.",
-        )(self._system_stats)
+        )(self.system_stats)
